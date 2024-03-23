@@ -16,8 +16,6 @@ import java.util.List;
 @Component
 public class Bot extends TelegramLongPollingBot {
 
-    //private static final Logger LOG = LoggerFactory.getLogger(Bot.class);
-
     private static final String START = "/start";
     private static final String GET_ALL = "/getAllRates";
     private static final String GET_ONE = "/getSpecificRate";
@@ -36,11 +34,9 @@ public class Bot extends TelegramLongPollingBot {
         }
         var message = update.getMessage().getText();
         var chatId = update.getMessage().getChatId();
+        String userName = update.getMessage().getChat().getUserName();
         switch (message.split(" ")[0]) {
             case GET_ALL -> {
-
-                String userName = update.getMessage().getChat().getUserName();
-
                 List<String> messages;
 
                 try {
@@ -55,7 +51,6 @@ public class Bot extends TelegramLongPollingBot {
                 }
             }
             case GET_ONE -> {
-                String userName = update.getMessage().getChat().getUserName();
                 String messageArgument = message.split(" ")[1];
 
                 String answer;
@@ -84,7 +79,6 @@ public class Bot extends TelegramLongPollingBot {
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
-            //LOG.error("Ошибка отправки сообщения", e);
             System.out.println("error sending message: " + e);
         }
     }
