@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface CryptoInfoService {
 
-    String getCryptoRate() throws Exception;
+    List<String> getCryptoRate() throws Exception;
+    String getCryptoRate(String cryptoName) throws Exception;
 }
