@@ -21,6 +21,7 @@ public class Bot extends TelegramLongPollingBot {
 
     private static final String START = "/start";
     private static final String GET_ALL = "/getAllRates";
+    private static final String GET_ONE = "/getSpecificRate";
 
     @Autowired
     private CryptoInfoServiceImpl service;
@@ -36,7 +37,7 @@ public class Bot extends TelegramLongPollingBot {
         }
         var message = update.getMessage().getText();
         var chatId = update.getMessage().getChatId();
-        switch (message) {
+        switch (message.split(" ")[0]) {
             case GET_ALL -> {
 
                 String userName = update.getMessage().getChat().getUserName();
@@ -54,9 +55,21 @@ public class Bot extends TelegramLongPollingBot {
                     sendMessage(chatId, formattedText);
                 }
             }
-            /*case USD -> usdCommand(chatId);
-            case EUR -> eurCommand(chatId);
-            case HELP -> helpCommand(chatId);*/
+            case GET_ONE -> {
+                String userName = update.getMessage().getChat().getUserName();
+                String messageArgument = message.split(" ")[1];
+
+                String answer = "";
+
+                try {
+                    answer = service.getCryptoRate(messageArgument);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+                var formattedText = String.format(answer, userName);
+                sendMessage(chatId, formattedText);
+            }
             default -> unknownCommand(chatId);
         }
     }
