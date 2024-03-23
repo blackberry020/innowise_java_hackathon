@@ -1,10 +1,10 @@
-package lv.javaguru.travel.insurance.services.impl;
+package ilona.crypto.analize.services.impl;
 
 import com.google.gson.Gson;
-import lv.javaguru.travel.insurance.domain.Crypto;
-import lv.javaguru.travel.insurance.domain.CryptoInfo;
-import lv.javaguru.travel.insurance.services.CryptoInfoService;
-import lv.javaguru.travel.insurance.client.Client;
+import ilona.crypto.analize.services.CryptoInfoService;
+import ilona.crypto.analize.domain.Crypto;
+import ilona.crypto.analize.domain.CryptoInfo;
+import ilona.crypto.analize.client.Client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,28 +21,19 @@ public class CryptoInfoServiceImpl implements CryptoInfoService {
 
     private String getJsonContent() throws Exception {
         var jsonOptional = client.getCryptoInfoJson();
-        String json = jsonOptional.orElseThrow(
+
+        return jsonOptional.orElseThrow(
                 () -> new Exception("Couldn't get JSON")
         );
-
-        return json;
     }
 
     private List<Crypto> getObjectsFromJson(String jsonText) {
-
         jsonText = "{ currencies: " + jsonText + "}";
-
         CryptoInfo cryptoInfo = new Gson().fromJson(jsonText, CryptoInfo.class);
-        List<Crypto> cryptoList = cryptoInfo.getCurrencies();
-
-        /*for (Crypto crypto : cryptoList) {
-            System.out.println(crypto);
-        }*/
-
-        return cryptoList;
+        return cryptoInfo.getCurrencies();
     }
 
-    private List<String> getAllRates(String jsonText) throws Exception {
+    private List<String> getAllRates(String jsonText) {
 
         List<Crypto> cryptoList = getObjectsFromJson(jsonText);
 

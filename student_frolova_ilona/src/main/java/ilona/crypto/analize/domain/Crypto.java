@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.domain;
+package ilona.crypto.analize.domain;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;

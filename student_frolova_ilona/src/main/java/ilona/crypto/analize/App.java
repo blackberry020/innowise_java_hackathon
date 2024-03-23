@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance;
+package ilona.crypto.analize;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

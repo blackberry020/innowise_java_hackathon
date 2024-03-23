@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.services;
+package ilona.crypto.analize.services;
 
 import java.util.List;
 

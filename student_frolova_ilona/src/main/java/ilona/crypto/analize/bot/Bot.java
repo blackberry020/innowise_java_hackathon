@@ -1,8 +1,7 @@
-package lv.javaguru.travel.insurance.bot;
+package ilona.crypto.analize.bot;
 
+import ilona.crypto.analize.services.impl.CryptoInfoServiceImpl;
 import lombok.Getter;
-import lv.javaguru.travel.insurance.services.CryptoInfoService;
-import lv.javaguru.travel.insurance.services.impl.CryptoInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -59,7 +58,7 @@ public class Bot extends TelegramLongPollingBot {
                 String userName = update.getMessage().getChat().getUserName();
                 String messageArgument = message.split(" ")[1];
 
-                String answer = "";
+                String answer;
 
                 try {
                     answer = service.getCryptoRate(messageArgument);

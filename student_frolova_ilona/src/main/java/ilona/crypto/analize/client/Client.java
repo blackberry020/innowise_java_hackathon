@@ -1,4 +1,4 @@
-package lv.javaguru.travel.insurance.client;
+package ilona.crypto.analize.client;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

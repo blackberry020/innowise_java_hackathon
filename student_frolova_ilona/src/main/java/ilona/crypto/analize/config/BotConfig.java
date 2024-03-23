@@ -1,6 +1,6 @@
-package lv.javaguru.travel.insurance.config;
+package ilona.crypto.analize.config;
 
-import lv.javaguru.travel.insurance.bot.Bot;
+import ilona.crypto.analize.bot.Bot;
 import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
